@@ -1,10 +1,10 @@
-<div class="app-course-page">
-	<app-course-page-header></app-course-page-header>
+<div class="app-course-list-page">
+	<breadcrumbs></breadcrumbs>
 	<div class="search-and-add-course">
 		<app-search-course></app-search-course>
 		<app-add-course></app-add-course>
 	</div>
 	<app-course-page-item *ngFor="let item of courseItems" [courseItem]="item"></app-course-page-item>
-	<app-load-home></app-load-home>
+	<app-load-more></app-load-more>
 </div>
   
