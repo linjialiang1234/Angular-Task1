@@ -12,4 +12,7 @@ export class LoadMoreComponent implements OnInit {
   ngOnInit() {
   }
 
+  showLoadMore() {
+    console.log('This button name is: Load More');
+  }
 }

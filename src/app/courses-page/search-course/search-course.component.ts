@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search-course.component.css']
 })
 export class SearchCourseComponent implements OnInit {
+  public courseInformation: string;
+  constructor() {
 
-  constructor() { }
+  }
 
   ngOnInit() {
+  }
+
+  showCourseInfromation(): void {
+    console.log('Input Value: ' + this.courseInformation);
   }
 
 }

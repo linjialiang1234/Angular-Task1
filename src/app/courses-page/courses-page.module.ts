@@ -1,19 +1,21 @@
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { CourseListPageComponent } from './course-list-page/course-list-page.component';
-import { CoursePageItemComponent } from './course-page-item/course-page-item.component';
+import { CoursesPageComponent } from './courses-page/courses-page.component';
+import { CourseItemComponent } from './course-item/course-item.component';
 import { LoadMoreComponent } from './load-more/load-more.component';
 import { SearchCourseComponent } from './search-course/search-course.component';
 import { AddCourseComponent } from './add-course/add-course.component';
 import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 
 @NgModule({
-  declarations: [CourseListPageComponent, CoursePageItemComponent,
+  declarations: [CoursesPageComponent, CourseItemComponent,
     LoadMoreComponent, SearchCourseComponent, AddCourseComponent,
     BreadcrumbsComponent],
   imports: [
+    FormsModule,
     CommonModule
   ],
-  exports: [CourseListPageComponent]
+  exports: [CoursesPageComponent]
 })
-export class CourseListPageModule { }
+export class CoursesPageModule { }
