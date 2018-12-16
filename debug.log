@@ -1,0 +1,2 @@
+[1215/192432.732:ERROR:process_reader_win.cc(242)] ReadMemory at 0x207c9d8d8e0 of 72 bytes failed: Only part of a ReadProcessMemory or WriteProcessMemory request was completed. (0x12B)
+[1215/192432.734:WARNING:pe_image_annotations_reader.cc(133)] could not read annotations list object in C:\Program Files (x86)\Google\Chrome\Application\67.0.3396.87\chrome_child.dll
