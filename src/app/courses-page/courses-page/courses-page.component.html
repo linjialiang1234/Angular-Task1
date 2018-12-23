@@ -1,10 +1,10 @@
 <div class="app-courses-page" >
 	<app-bread-crumbs></app-bread-crumbs>
 	<div class="search-and-add-course">
-		<app-search-course></app-search-course>
+		<app-search-course (searchCourse)="searchCourse($event)"></app-search-course>
 		<app-add-course></app-add-course>
 	</div>
-	<app-course-item *ngFor="let item of courseItems" [courseItem]="item" (delete)="deleteCourse($event)"></app-course-item>
-	<app-load-more></app-load-more>
+	<app-course-item *ngFor="let item of courseItems" [courseItem]="item" (delete)="deleteCourse($event)" createdDate = "item.createDate"></app-course-item>
+	<app-load-more [courseItems]="courseItems"></app-load-more>
 </div>
   

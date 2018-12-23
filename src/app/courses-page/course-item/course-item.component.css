@@ -2,10 +2,23 @@
 	margin: 10px 20px 10px 20px;
 }
 
+.course-title {
+	display: flex;
+}
+
 .edit-button {
 	width: 70px;
 }
 
 .delete-button {
 	width: 70px;
+}
+
+.changeBackgroundColor {
+	background-color: purple;
+}
+.showStarIcon {
+	background: url('/../../../assets/images/stars_checkboxes.png') center no-repeat;
+	width: 50px;
+	/*height: 100px;*/
 }

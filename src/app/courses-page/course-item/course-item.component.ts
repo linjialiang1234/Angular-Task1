@@ -20,4 +20,14 @@ export class CourseItemComponent implements OnInit {
     this.delete.emit(courseId);
   }
 
+  displayStarIcon() {
+    if(this.courseItem.topRated) {
+      return true;
+    }
+    else {
+      return false;
+    }
+
+  }
+
 }

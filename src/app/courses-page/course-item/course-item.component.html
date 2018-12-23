@@ -1,8 +1,11 @@
-<div class="alert alert-primary course-item">
+<div class="alert alert-primary course-item" [ngClass]="{'changeBackgroundColor': displayStarIcon()}">
 	<div class="row">
-		<div class="col-6">{{courseItem.title}}</div>
+		<div class="col-6 course-title">
+			<div>{{courseItem.title | uppercase}}</div>
+			<div [ngClass]="{'showStarIcon': displayStarIcon(), 'hideStartIcon': !displayStarIcon()}"></div>
+		</div>
 		<div class="col-2">{{courseItem.duration}}</div>
-		<div class="col-2">{{courseItem.createDate}}</div>
+		<div class="col-2">{{courseItem.createDate | date: 'dd.MM.yyyy'}}</div>
 		<div class="col-2">
 			<button type="button" class="edit-button">Edit</button>
 		</div>

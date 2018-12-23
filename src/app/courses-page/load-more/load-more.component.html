@@ -1,6 +1,12 @@
 <div class="load-more">
-	<button class="load-more-button" (click)="showLoadMore()">
-  		LOAD MORE
+	<button *ngIf="displayCourseItem(); else showNoDataMessage" class="load-more-button" (click)="showLoadMore()">
+		LOAD MORE
 	</button>
+
+	<ng-template #showNoDataMessage>
+		<button class="load-more-button" (click)="showLoadMore()">
+  		NO DATA, FEEL FREE TO ADD NEW COURSE
+		</button>
+	</ng-template>
 </div>
 
