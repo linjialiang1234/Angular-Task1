@@ -9,7 +9,7 @@ export class DurationPipe implements PipeTransform {
     	const calculatedRestMinutes = (hours - rhours) * 60;
     	const rminutes = Math.round(calculatedRestMinutes);
     	let totalDuration;
-    	if(rhours === 0) {
+    	if (rhours === 0) {
     		totalDuration = rminutes + ' minute(s)';
     	} else {
     		totalDuration = rhours + ' hour(s) ' + rminutes + ' minute(s)';

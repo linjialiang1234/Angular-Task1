@@ -21,10 +21,9 @@ export class CourseItemComponent implements OnInit {
   }
 
   displayStarIcon() {
-    if(this.courseItem.topRated) {
+    if (this.courseItem.topRated) {
       return true;
-    }
-    else {
+    } else {
       return false;
     }
 

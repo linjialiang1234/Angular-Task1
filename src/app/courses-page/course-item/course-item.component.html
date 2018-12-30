@@ -1,4 +1,4 @@
-<div class="alert alert-primary course-item" [ngClass]="{'changeBackgroundColor': displayStarIcon()}">
+<div class="alert alert-primary course-item" [creationDate]="courseItem" [ngClass]="{'changeBackgroundColor': displayStarIcon()}">
 	<div class="row">
 		<div class="col-6 course-title">
 			<div>{{courseItem.title | uppercase}}</div>

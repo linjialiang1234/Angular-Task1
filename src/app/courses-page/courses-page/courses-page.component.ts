@@ -27,7 +27,7 @@ export class CoursesPageComponent implements OnInit, OnChanges, DoCheck, OnDestr
     this.courseItems = [{
     id: 1,
     title: 'Video Course 1',
-    createDate: this.createDate(2018, 4, 23),
+    createDate: this.createDate(2018, 11, 27),
     duration: this.createDuration(88),
     description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ',
     topRated: true
@@ -35,7 +35,7 @@ export class CoursesPageComponent implements OnInit, OnChanges, DoCheck, OnDestr
   {
     id: 2,
     title: 'Video Course 2',
-    createDate: this.createDate(2018, 9, 6),
+    createDate: this.createDate(2018, 12, 30),
     duration: this.createDuration(27),
     description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industtopRated: false;ry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. ',
     topRated: false
@@ -96,13 +96,11 @@ export class CoursesPageComponent implements OnInit, OnChanges, DoCheck, OnDestr
   createDate(y, m, d): any {
       const date: any = new Date(y, m, d);
       return date;
-      // let date = new DatePipe().transform(new Date(), 'yyyy/MM/dd');
-      // return date;
   }
 
   createDuration(minutes): any {
-    
-    var transformedMinutes;
+
+    let transformedMinutes;
     transformedMinutes = this._durationPipe.transform(minutes);
     return transformedMinutes;
   }
@@ -118,7 +116,7 @@ export class CoursesPageComponent implements OnInit, OnChanges, DoCheck, OnDestr
   }
 
   searchCourse(courseInformation) {
-    var showFilterCourse;
+    let showFilterCourse;
     showFilterCourse = this._filterCoursePipe.transform(this.originalCourseItems, courseInformation);
     this.courseItems = showFilterCourse;
   }

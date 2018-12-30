@@ -7,7 +7,7 @@ import { LoadMoreComponent } from './load-more/load-more.component';
 import { SearchCourseComponent } from './search-course/search-course.component';
 import { AddCourseComponent } from './add-course/add-course.component';
 import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
-import { CreatedDateDirective } from './createdDate.directive';
+import { CreatedDateDirective } from './course-item/createdDate.directive';
 
 @NgModule({
   declarations: [CoursesPageComponent, CourseItemComponent,

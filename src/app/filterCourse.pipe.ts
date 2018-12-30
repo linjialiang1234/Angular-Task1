@@ -3,8 +3,8 @@ import {Pipe, PipeTransform} from '@angular/core';
 @Pipe({name: 'filterCourse'})
 export class FilterCoursePipe implements PipeTransform {
 	transform(items, searchText) {
-        if(!items) return [];
-        if(!searchText) return items;
+        if (!items) { return []; }
+        if (!searchText) { return items; }
 
         searchText = searchText.toLowerCase();
 

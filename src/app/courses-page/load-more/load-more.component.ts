@@ -20,7 +20,7 @@ export class LoadMoreComponent implements OnInit, OnChanges {
   }
 
   displayCourseItem() {
-    if(this.courseItems.length !== 0) {
+    if (this.courseItems.length !== 0) {
       return true;
     } else {
       return false;
