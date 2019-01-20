@@ -4,10 +4,10 @@
 			<div>{{courseItem.title | uppercase}}</div>
 			<div [ngClass]="{'showStarIcon': displayStarIcon(), 'hideStartIcon': !displayStarIcon()}"></div>
 		</div>
-		<div class="col-2">{{courseItem.duration}}</div>
+		<div class="col-2">{{courseItem.duration | duration}}</div>
 		<div class="col-2">{{courseItem.createDate | date: 'dd.MM.yyyy'}}</div>
 		<div class="col-2">
-			<button type="button" class="edit-button">Edit</button>
+			<button type="button" class="edit-button" (click)="updateCourse(courseItem.id)">Edit</button>
 		</div>
 	</div>
 	<div class="row">
@@ -17,3 +17,5 @@
 		</div>
 	</div>
 <div>
+
+

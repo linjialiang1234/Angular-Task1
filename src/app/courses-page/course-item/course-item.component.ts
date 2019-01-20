@@ -8,11 +8,16 @@ import {CourseItem} from '../course-item.model';
 })
 export class CourseItemComponent implements OnInit {
   @Input() public courseItem: CourseItem;
+  @Output() update: EventEmitter<number> = new EventEmitter<number>();
   @Output() delete: EventEmitter<number> = new EventEmitter<number>();
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  updateCourse(courseId: number) {
+    this.update.emit(courseId);
   }
 
   deleteCourse(courseId: number) {

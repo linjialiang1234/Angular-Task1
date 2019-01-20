@@ -4,7 +4,7 @@
 		<app-search-course (searchCourse)="searchCourse($event)"></app-search-course>
 		<app-add-course></app-add-course>
 	</div>
-	<app-course-item *ngFor="let item of courseItems" [courseItem]="item" (delete)="deleteCourse($event)" createdDate = "item.createDate"></app-course-item>
+	<app-course-item *ngFor="let item of courseItems" [courseItem]="item" (update)="updateCourse($event)" (delete)="deleteCourse($event)" createdDate = "item.createDate"></app-course-item>
 	<app-load-more [courseItems]="courseItems"></app-load-more>
 </div>
   
