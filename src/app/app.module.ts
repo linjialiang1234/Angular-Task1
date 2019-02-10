@@ -7,7 +7,8 @@ import { CoreModule } from './core/core.module';
 import { CoursesPageModule } from './courses-page/courses-page.module';
 import { HomeModule } from './home/home.module';
 import { LoginPageModule } from './login-page/login-page.module';
-import {RouterModule} from '@angular/router';
+import { AddCoursePageModule } from './add-course-page/add-course-page.module';
+import { RouterModule } from '@angular/router';
 import { ROUTES } from './app.routes';
 import { CoursesService } from './courses.service';
 import { AuthorizationService } from './authorization.service';
@@ -24,6 +25,7 @@ import { AuthorizationService } from './authorization.service';
     CoursesPageModule,
     HomeModule,
     LoginPageModule,
+    AddCoursePageModule,
     RouterModule.forRoot(ROUTES)
   ],
   providers: [CoursesService, AuthorizationService],

@@ -19,7 +19,6 @@ export class SearchCourseComponent implements OnInit {
   searchCourseHandler(): void {
     console.log('Input Value: ' + this.courseInformation);
     this.searchCourse.emit(this.courseInformation);
-
   }
 
 }

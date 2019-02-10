@@ -1,7 +1,8 @@
-import { Component, OnInit, Input, Output, EventEmitter, Inject} from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, Inject, ChangeDetectionStrategy} from '@angular/core';
 import {CourseItem} from '../course-item.model';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import {DialogOverviewExampleDialog} from '../delete-dialog/dialog-overview-example-dialog';
+
 export interface DialogData {
   animal: string;
   name: string;
@@ -9,6 +10,7 @@ export interface DialogData {
 
 @Component({
   selector: 'app-course-item',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './course-item.component.html',
   styleUrls: ['./course-item.component.css']
 })

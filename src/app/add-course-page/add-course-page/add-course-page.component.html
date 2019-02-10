@@ -1,0 +1,17 @@
+<div class="add-course-page-container">
+	<form>
+  		Title<br>
+  		<input type="text" name="course-title"  [(ngModel)]="courseTitle" placeholder="Video Course 1"> 
+  		<br>
+  		Description<br>
+  		<textarea name="course-description" rows="4" cols="50"></textarea>
+		<br>
+		<add-course-date></add-course-date>
+		<add-course-duration></add-course-duration>
+		<add-course-authors></add-course-authors>
+		<div>
+			<button type="button" class="save-button" (click)="save()">Save</button>
+			<button type="button" class="cancel-button" (click)="cancel()">Cancel</button>
+		</div>
+	</form>
+</div>

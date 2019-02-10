@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, DoCheck, OnDestroy  } from '@angular/core';
+import { Component, OnInit, OnChanges, DoCheck, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
 import { CourseItem } from '../course-item.model';
 import { UserIdentity } from '../user-identity.model';
 import { DatePipe} from '@angular/common';
@@ -8,6 +8,7 @@ import { AuthorizationService } from '../../authorization.service';
 
 @Component({
   selector: 'app-courses-page',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './courses-page.component.html',
   styleUrls: ['./courses-page.component.css'],
   providers: [DatePipe, FilterCoursePipe]
@@ -20,6 +21,7 @@ export class CoursesPageComponent implements OnInit, OnChanges, DoCheck, OnDestr
   public originalCourseItems: CourseItem[];
   public updatedCourseItem;
   public selectedCourseItem;
+  public addCoursePage;
   constructor(private _filterCoursePipe: FilterCoursePipe, private coursesService: CoursesService, private authorizationService: AuthorizationService) { }
 
   ngOnChanges() {
@@ -32,6 +34,7 @@ export class CoursesPageComponent implements OnInit, OnChanges, DoCheck, OnDestr
     console.log(this.courseItems);
  
     this.originalCourseItems = this.courseItems;
+    this.addCoursePage = false;
   }
 
   ngDoCheck() {
@@ -60,6 +63,14 @@ export class CoursesPageComponent implements OnInit, OnChanges, DoCheck, OnDestr
     let showFilterCourse;
     showFilterCourse = this._filterCoursePipe.transform(this.originalCourseItems, courseInformation);
     this.courseItems = showFilterCourse;
+  }
+
+  addCourse(addCourseInformation) {
+    if(this.addCoursePage === false) {
+      return this.addCoursePage = true;
+    } else {
+      return this.addCoursePage = false;
+    }
   }
 
   isAuth() {

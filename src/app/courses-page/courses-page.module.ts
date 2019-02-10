@@ -9,6 +9,7 @@ import { AddCourseComponent } from './add-course/add-course.component';
 import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { CreatedDateDirective } from './course-item/createdDate.directive';
 import { DurationPipe } from '../duration.pipe';
+import { FilterCoursePipe } from '../filterCourse.pipe';
 import { DialogOverviewExampleDialog } from './delete-dialog/dialog-overview-example-dialog';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
@@ -19,10 +20,11 @@ import {
   MatDialogModule
 } from '@angular/material';
 import { LoginPageModule } from '../login-page/login-page.module';
+import { AddCoursePageModule} from '../add-course-page/add-course-page.module';
 @NgModule({
   declarations: [CoursesPageComponent, CourseItemComponent,
     LoadMoreComponent, SearchCourseComponent, AddCourseComponent,
-    BreadcrumbsComponent, CreatedDateDirective, DurationPipe, DialogOverviewExampleDialog],
+    BreadcrumbsComponent, CreatedDateDirective, DurationPipe, FilterCoursePipe, DialogOverviewExampleDialog],
   imports: [
     FormsModule,
     CommonModule,
@@ -32,7 +34,8 @@ import { LoginPageModule } from '../login-page/login-page.module';
   	MatInputModule,
   	MatRippleModule,
   	MatDialogModule,
-    LoginPageModule
+    LoginPageModule,
+    AddCoursePageModule
   ],
   exports: [CoursesPageComponent,
   			MatButtonModule,
@@ -40,7 +43,8 @@ import { LoginPageModule } from '../login-page/login-page.module';
     		MatInputModule,
     		MatRippleModule,
     		MatDialogModule,
-        LoginPageModule],
+        LoginPageModule,
+        AddCoursePageModule],
   entryComponents: [DialogOverviewExampleDialog],
 
 })
