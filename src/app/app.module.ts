@@ -6,9 +6,11 @@ import { AppComponent } from './app.component';
 import { CoreModule } from './core/core.module';
 import { CoursesPageModule } from './courses-page/courses-page.module';
 import { HomeModule } from './home/home.module';
+import { LoginPageModule } from './login-page/login-page.module';
 import {RouterModule} from '@angular/router';
 import { ROUTES } from './app.routes';
 import { CoursesService } from './courses.service';
+import { AuthorizationService } from './authorization.service';
 
 @NgModule({
   declarations: [
@@ -21,9 +23,10 @@ import { CoursesService } from './courses.service';
     CoreModule,
     CoursesPageModule,
     HomeModule,
+    LoginPageModule,
     RouterModule.forRoot(ROUTES)
   ],
-  providers: [CoursesService],
+  providers: [CoursesService, AuthorizationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

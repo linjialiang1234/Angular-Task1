@@ -1,10 +1,11 @@
 import { Component, OnInit, OnChanges, DoCheck, OnDestroy  } from '@angular/core';
 import { CourseItem } from '../course-item.model';
 import { UserIdentity } from '../user-identity.model';
-// import { DurationPipe } from '../../duration.pipe';
 import { DatePipe} from '@angular/common';
 import { FilterCoursePipe } from '../../filterCourse.pipe';
 import { CoursesService } from '../../courses.service';
+import { AuthorizationService } from '../../authorization.service';
+
 @Component({
   selector: 'app-courses-page',
   templateUrl: './courses-page.component.html',
@@ -19,7 +20,7 @@ export class CoursesPageComponent implements OnInit, OnChanges, DoCheck, OnDestr
   public originalCourseItems: CourseItem[];
   public updatedCourseItem;
   public selectedCourseItem;
-  constructor(private _filterCoursePipe: FilterCoursePipe, private coursesService: CoursesService) { }
+  constructor(private _filterCoursePipe: FilterCoursePipe, private coursesService: CoursesService, private authorizationService: AuthorizationService) { }
 
   ngOnChanges() {
     console.log('OnChanges');
@@ -59,5 +60,9 @@ export class CoursesPageComponent implements OnInit, OnChanges, DoCheck, OnDestr
     let showFilterCourse;
     showFilterCourse = this._filterCoursePipe.transform(this.originalCourseItems, courseInformation);
     this.courseItems = showFilterCourse;
+  }
+
+  isAuth() {
+    return this.authorizationService.isAuthenticated();
   }
 }

@@ -1,0 +1,12 @@
+<div class="login-page-container">
+	<h2>Login</h2>
+	<form>
+  		Email *Required<br>
+  		<input type="text" name="email"  [(ngModel)]="email">
+  		<br>
+  		Password *Required<br>
+  		<input type="text" name="password"  [(ngModel)]="password">
+		<br>
+  		<button type="button" class="login-button" (click)="login()">Login</button>
+	</form>
+</div>

@@ -1,5 +1,11 @@
-import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, Inject} from '@angular/core';
 import {CourseItem} from '../course-item.model';
+import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
+import {DialogOverviewExampleDialog} from '../delete-dialog/dialog-overview-example-dialog';
+export interface DialogData {
+  animal: string;
+  name: string;
+}
 
 @Component({
   selector: 'app-course-item',
@@ -11,18 +17,16 @@ export class CourseItemComponent implements OnInit {
   @Output() update: EventEmitter<number> = new EventEmitter<number>();
   @Output() delete: EventEmitter<number> = new EventEmitter<number>();
 
-  constructor() { }
+  animal: string;
+  name: string;
+
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
   }
 
   updateCourse(courseId: number) {
     this.update.emit(courseId);
-  }
-
-  deleteCourse(courseId: number) {
-    console.log('courseId:' + courseId);
-    this.delete.emit(courseId);
   }
 
   displayStarIcon() {
@@ -34,4 +38,18 @@ export class CourseItemComponent implements OnInit {
 
   }
 
+   openDialog(courseId: number): void {
+    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+      width: '250px',
+      data: {name: this.name, courseItemId: courseId}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.delete.emit(courseId);
+    });
+  }
+
 }
+
+

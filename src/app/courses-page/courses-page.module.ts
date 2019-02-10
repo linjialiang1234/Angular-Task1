@@ -9,15 +9,39 @@ import { AddCourseComponent } from './add-course/add-course.component';
 import { BreadcrumbsComponent } from './breadcrumbs/breadcrumbs.component';
 import { CreatedDateDirective } from './course-item/createdDate.directive';
 import { DurationPipe } from '../duration.pipe';
-
+import { DialogOverviewExampleDialog } from './delete-dialog/dialog-overview-example-dialog';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {
+  MatButtonModule,
+  MatFormFieldModule,
+  MatInputModule,
+  MatRippleModule,
+  MatDialogModule
+} from '@angular/material';
+import { LoginPageModule } from '../login-page/login-page.module';
 @NgModule({
   declarations: [CoursesPageComponent, CourseItemComponent,
     LoadMoreComponent, SearchCourseComponent, AddCourseComponent,
-    BreadcrumbsComponent, CreatedDateDirective, DurationPipe],
+    BreadcrumbsComponent, CreatedDateDirective, DurationPipe, DialogOverviewExampleDialog],
   imports: [
     FormsModule,
-    CommonModule
+    CommonModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+  	MatFormFieldModule,
+  	MatInputModule,
+  	MatRippleModule,
+  	MatDialogModule,
+    LoginPageModule
   ],
-  exports: [CoursesPageComponent]
+  exports: [CoursesPageComponent,
+  			MatButtonModule,
+    		MatFormFieldModule,
+    		MatInputModule,
+    		MatRippleModule,
+    		MatDialogModule,
+        LoginPageModule],
+  entryComponents: [DialogOverviewExampleDialog],
+
 })
 export class CoursesPageModule { }

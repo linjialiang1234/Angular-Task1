@@ -1,4 +1,4 @@
-<div class="app-courses-page" >
+<div class="app-courses-page" *ngIf="isAuth()===true">
 	<app-bread-crumbs></app-bread-crumbs>
 	<div class="search-and-add-course">
 		<app-search-course (searchCourse)="searchCourse($event)"></app-search-course>
@@ -7,4 +7,9 @@
 	<app-course-item *ngFor="let item of courseItems" [courseItem]="item" (update)="updateCourse($event)" (delete)="deleteCourse($event)" createdDate = "item.createDate"></app-course-item>
 	<app-load-more [courseItems]="courseItems"></app-load-more>
 </div>
+
+<div class="app-courses-page" *ngIf="isAuth()===false">
+	<login-page></login-page>
+</div>
+
   

@@ -47,22 +47,6 @@ export class CoursesService {
     topRated: false
   }];
 
-  public userIdentity = [{
-    id: 1,
-    firstName: 'Leo',
-    lastName: 'Lam'
-  },
-  {
-    id: 2,
-    firstName: 'Jack',
-    lastName: 'Wang'
-  },
-  {
-    id: 3,
-    firstName: 'Tom',
-    lastName: 'Ma'
-  }];
-
   public updatedCourseItem;
   public selectedCourseItem;
 
