@@ -5,12 +5,16 @@ import { AddCoursePageComponent } from './add-course-page/add-course-page/add-co
 import { PageNotFoundComponent } from './page-not-found/page-not-found/page-not-found.component';
 import { LoginPageComponent } from './login-page/login-page/login-page.component';
 import { EditCourseComponent } from './edit-course/edit-course/edit-course.component';
+import { 
+  AuthGuardService as AuthGuard 
+} from './auth-guard.service';
+
 export const ROUTES: Route[] = [
   {	path: '', redirectTo: '/courses', pathMatch: 'full'},
   {	path: 'home', component: HomeComponent},
-  {	path: 'courses', component: CoursesPageComponent},
-  {	path: 'courses/new', component: AddCoursePageComponent},
-  { path: 'courses/:id', component: EditCourseComponent},
+  {	path: 'courses', component: CoursesPageComponent, canActivate: [AuthGuard]},
+  {	path: 'courses/new', component: AddCoursePageComponent, canActivate: [AuthGuard] },
+  { path: 'courses/:id', component: EditCourseComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginPageComponent},
   { path: '**', component: PageNotFoundComponent}
 ];

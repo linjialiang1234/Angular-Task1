@@ -74,7 +74,7 @@ export class AuthorizationService {
 
   isAuthenticated() {
   	let isAuthenticated = true;
-  	if (localStorage.getItem('email') === null) {
+  	if (localStorage.getItem('email') === "null") {
   		isAuthenticated = false;
   	}
 
