@@ -7,7 +7,9 @@
 		<div class="col-2">{{courseItem.duration | duration}}</div>
 		<div class="col-2">{{courseItem.createDate | date: 'dd.MM.yyyy'}}</div>
 		<div class="col-2">
-			<button type="button" class="edit-button" (click)="updateCourse(courseItem.id)">Edit</button>
+			<a class="btn" routerLink="/courses/{{courseItem.id}}">
+				Edit
+			</a>
 		</div>
 	</div>
 	<div class="row">

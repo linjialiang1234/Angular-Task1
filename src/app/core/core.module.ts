@@ -5,11 +5,13 @@ import { FooterComponent } from './footer/footer.component';
 import { LogoComponent } from './logo/logo.component';
 import { UserLoginComponent } from './user-login/user-login.component';
 import { LogOffComponent } from './log-off/log-off.component';
+import { RouterModule} from '@angular/router';
 
 @NgModule({
   declarations: [HeaderComponent, FooterComponent, LogoComponent, UserLoginComponent, LogOffComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   exports: [HeaderComponent, FooterComponent]
 })

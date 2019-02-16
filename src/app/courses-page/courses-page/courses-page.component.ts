@@ -32,7 +32,7 @@ export class CoursesPageComponent implements OnInit, OnChanges, DoCheck, OnDestr
     console.log('OnInit');
     this.courseItems = this.coursesService.getList();
     console.log(this.courseItems);
- 
+
     this.originalCourseItems = this.courseItems;
     this.addCoursePage = false;
   }
@@ -51,8 +51,8 @@ export class CoursesPageComponent implements OnInit, OnChanges, DoCheck, OnDestr
   }
 
   updateCourse(courseId) {
-    this.updatedCourseItem = this.coursesService.updateItem(courseId);
-    console.log(this.updatedCourseItem);
+    this.courseItems = this.coursesService.getItemById(courseId);
+    console.log(this.courseItems);
   }
 
   deleteCourse(courseId) {
@@ -66,7 +66,7 @@ export class CoursesPageComponent implements OnInit, OnChanges, DoCheck, OnDestr
   }
 
   addCourse(addCourseInformation) {
-    if(this.addCoursePage === false) {
+    if (this.addCoursePage === false) {
       return this.addCoursePage = true;
     } else {
       return this.addCoursePage = false;

@@ -1,0 +1,32 @@
+<div class="add-course-page-container">
+	<form>
+  		Title<br>
+  		<input type="text" name="course-title"  [(ngModel)]="courseItem.title"> 
+  		<br>
+  		Description<br>
+  		<textarea name="course-description" rows="4" cols="50" [(ngModel)]="courseItem.description"></textarea>
+		<br>
+		<!-- <add-course-date></add-course-date> -->
+		<div>
+	       Date:<br>
+  	       <input type="text" name="course-date"  [(ngModel)]="courseItem.createDate"> 
+  	       <br>
+        </div>
+		<!-- <add-course-duration></add-course-duration> -->
+		<div>
+	       Duration:<br>
+  	       <input type="text" name="course-duration"  [(ngModel)]="courseItem.duration">{{courseItem.duration}} 
+  	       <br>
+        </div>
+		<!-- <add-course-authors></add-course-authors> -->
+		<div>
+	       Authors:<br>
+  	       <input type="text" name="course-authors"  [(ngModel)]="courseItem.authors">
+  	       <br>
+        </div>
+		<div>
+			<button type="button" class="save-button" (click)="save()">Save</button>
+			<button type="button" class="cancel-button" (click)="cancel()">Cancel</button>
+		</div>
+	</form>
+</div>

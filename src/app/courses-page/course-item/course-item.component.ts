@@ -27,9 +27,9 @@ export class CourseItemComponent implements OnInit {
   ngOnInit() {
   }
 
-  updateCourse(courseId: number) {
-    this.update.emit(courseId);
-  }
+  // updateCourse(courseId: number) {
+  //   this.update.emit(courseId);
+  // }
 
   displayStarIcon() {
     if (this.courseItem.topRated) {

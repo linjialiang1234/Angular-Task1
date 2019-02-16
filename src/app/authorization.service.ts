@@ -38,17 +38,17 @@ export class AuthorizationService {
     email: '3333@epam.com',
     password: '123456',
     isLogin: false
-  }]
+  }];
 
   constructor() { }
 
   login(userInformation) {
-  	var loginSuccess = false;
+  	let loginSuccess = false;
 
  	  this.usersInformation.forEach((user, index) => {
       if (user.email === userInformation.email && user.password === userInformation.password) {
         localStorage.setItem('email', user.email);
-        localStorage.setItem('passWord', user.password);
+        localStorage.setItem('password', user.password);
   		  loginSuccess = true;
         this.isAuthenticated();
         user.isLogin = true;
@@ -59,7 +59,7 @@ export class AuthorizationService {
   }
 
   logout(userInformation) {
-  	var logoutSuccess = false;
+  	let logoutSuccess = false;
   	this.usersInformation.forEach((user, index) => {
       if (user.email === userInformation.email) {
         localStorage.setItem('email', null);
@@ -73,8 +73,8 @@ export class AuthorizationService {
   }
 
   isAuthenticated() {
-  	var isAuthenticated = true;
-  	if(localStorage.getItem('email') === null) {
+  	let isAuthenticated = true;
+  	if (localStorage.getItem('email') === null) {
   		isAuthenticated = false;
   	}
 
@@ -82,10 +82,10 @@ export class AuthorizationService {
   }
 
   getUserInfo() {
-    var userInfo;
+    let userInfo;
     this.usersInformation.forEach((user, index) => {
-      if(user.isLogin === true) {
-        userInfo = user
+      if (user.isLogin === true) {
+        userInfo = user;
       }
     });
 

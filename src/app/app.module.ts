@@ -12,10 +12,11 @@ import { RouterModule } from '@angular/router';
 import { ROUTES } from './app.routes';
 import { CoursesService } from './courses.service';
 import { AuthorizationService } from './authorization.service';
-
+import { PageNotFoundModule } from './page-not-found/page-not-found.module';
+import { EditCourseModule } from './edit-course/edit-course.module';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,7 +27,9 @@ import { AuthorizationService } from './authorization.service';
     HomeModule,
     LoginPageModule,
     AddCoursePageModule,
-    RouterModule.forRoot(ROUTES)
+    RouterModule.forRoot(ROUTES),
+    PageNotFoundModule,
+    EditCourseModule
   ],
   providers: [CoursesService, AuthorizationService],
   bootstrap: [AppComponent]

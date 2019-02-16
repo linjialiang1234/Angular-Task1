@@ -67,6 +67,7 @@ export class CoursesService {
   }
 
   getItemById(courseId) {
+    courseId = Number(courseId);
     this.courseItems.forEach((course, index) => {
       if (course.id === courseId) {
         this.selectedCourseItem = course;
@@ -76,14 +77,16 @@ export class CoursesService {
     return this.selectedCourseItem;
   }
 
-  updateItem(courseId) {
+  updateItem(courseInformation) {
+    let courseId;
+    courseId = Number(courseInformation.id);
     this.courseItems.forEach((course, index) => {
       if (course.id === courseId) {
-        this.updatedCourseItem = course;
+        course = courseInformation;
       }
     });
 
-    return this.updatedCourseItem;
+    return this.courseItems;
   }
 
   removeItem(courseId) {

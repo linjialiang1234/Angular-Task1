@@ -21,6 +21,9 @@ import {
 } from '@angular/material';
 import { LoginPageModule } from '../login-page/login-page.module';
 import { AddCoursePageModule} from '../add-course-page/add-course-page.module';
+import { RouterModule } from '@angular/router';
+import { ROUTES } from '../app.routes';
+
 @NgModule({
   declarations: [CoursesPageComponent, CourseItemComponent,
     LoadMoreComponent, SearchCourseComponent, AddCourseComponent,
@@ -35,7 +38,9 @@ import { AddCoursePageModule} from '../add-course-page/add-course-page.module';
   	MatRippleModule,
   	MatDialogModule,
     LoginPageModule,
-    AddCoursePageModule
+    AddCoursePageModule,
+    RouterModule.forRoot(ROUTES)
+
   ],
   exports: [CoursesPageComponent,
   			MatButtonModule,
