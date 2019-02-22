@@ -14,6 +14,9 @@ import { CoursesService } from './courses.service';
 import { AuthorizationService } from './authorization.service';
 import { PageNotFoundModule } from './page-not-found/page-not-found.module';
 import { EditCourseModule } from './edit-course/edit-course.module';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { Resolver } from './resolver';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,9 +32,10 @@ import { EditCourseModule } from './edit-course/edit-course.module';
     AddCoursePageModule,
     RouterModule.forRoot(ROUTES),
     PageNotFoundModule,
-    EditCourseModule
+    EditCourseModule,
+    HttpClientModule
   ],
-  providers: [CoursesService, AuthorizationService],
+  providers: [CoursesService, AuthorizationService, Resolver],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

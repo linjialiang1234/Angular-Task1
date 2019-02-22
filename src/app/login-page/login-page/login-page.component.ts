@@ -8,31 +8,44 @@ import { Router } from '@angular/router';
   styleUrls: ['./login-page.component.css']
 })
 export class LoginPageComponent implements OnInit {
-  public email: string;
+  public login: string;
   public password: string;
+  public usersInfo;
+
   constructor(private authorizationService: AuthorizationService,
               private router: Router) { }
 
   ngOnInit() {
   }
 
-  login() {
+  triggerLogin() {
   	const userInformation = {
-  		email: this.email,
+  		login: this.login,
   		password: this.password
   	};
 
-  	let loginResult;
     let userInfo;
-  	loginResult = this.authorizationService.login(userInformation);
+    let loginSuccess = false;
 
-  	if (loginResult === true) {
-  		console.log('logged in successfully');
-      userInfo = this.authorizationService.getUserInfo();
-      this.router.navigate(['/courses']);
-  	} else {
-  		console.log('logged in unsuccessfully');
-  	}
+    this.authorizationService.getUsers().subscribe((data) => {
+      this.usersInfo = data;
+      console.log("getUsers data: " + data);
+      this.authorizationService.updateUsersInformation(data);
+      this.usersInfo.forEach((user, index) => {
+        if (user.login === userInformation.login && user.password === userInformation.password) {
+          localStorage.setItem('loginSuccessUser', user.fakeToken);
+          loginSuccess = true;
+          // this.authorizationService.isAuthenticated();
+        }
+      });
+
+      if(loginSuccess === true) {
+        console.log('logged in successfully');
+        userInfo = this.authorizationService.getUserInfo();
+        this.router.navigate(['/courses']);
+      } else {
+        console.log('logged in unsuccessfully');
+      } 
+    });
   }
-
 }

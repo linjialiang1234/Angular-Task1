@@ -2,11 +2,11 @@
 	<h2>Login</h2>
 	<form>
   		Email *Required<br>
-  		<input type="text" name="email"  [(ngModel)]="email">
+  		<input type="text" name="email"  [(ngModel)]="login">
   		<br>
   		Password *Required<br>
   		<input type="text" name="password"  [(ngModel)]="password">
 		<br>
-  		<button type="button" class="login-button" (click)="login()">Login</button>
+  		<button type="button" class="login-button" (click)="triggerLogin()">Login</button>
 	</form>
 </div>

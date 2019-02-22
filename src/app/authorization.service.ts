@@ -1,4 +1,10 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpResponse, HttpErrorResponse, HttpParams } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError, retry } from 'rxjs/operators';
+import { HttpHeaders } from '@angular/common/http';
+
+const BASE_URL = 'http://localhost:3004/users';
 
 @Injectable({
   providedIn: 'root'
@@ -21,60 +27,56 @@ export class AuthorizationService {
     lastName: 'Ma'
   }];
 
-  public usersInformation = [{
-    id: 1,
-    email: '1111@epam.com',
-    password: '123456',
-    isLogin: false
-  },
-  {
-    id: 2,
-    email: '2222@epam.com',
-    password: '123456',
-    isLogin: false
-  },
-  {
-    id: 3,
-    email: '3333@epam.com',
-    password: '123456',
-    isLogin: false
-  }];
+  public usersInformation;
 
-  constructor() { }
+  // {
+  //   "id": 6093,
+  //   "fakeToken": "58ebfdf7f1f558c5c86e17f6",
+  //   "name": {
+  //     "first": "Ines",
+  //     "last": "Lowe"
+  //   },
+  //   "login": "Warner",
+  //   "password": "ea"
+  // }
+  // = [{
+  //   id: 1,
+  //   email: '1111@epam.com',
+  //   password: '123456',
+  //   isLogin: false
+  // },
+  // {
+  //   id: 2,
+  //   email: '2222@epam.com',
+  //   password: '123456',
+  //   isLogin: false
+  // },
+  // {
+  //   id: 3,
+  //   email: '3333@epam.com',
+  //   password: '123456',
+  //   isLogin: false
+  // }];
 
-  login(userInformation) {
-  	let loginSuccess = false;
+  constructor(private http: HttpClient) { }
 
- 	  this.usersInformation.forEach((user, index) => {
-      if (user.email === userInformation.email && user.password === userInformation.password) {
-        localStorage.setItem('email', user.email);
-        localStorage.setItem('password', user.password);
-  		  loginSuccess = true;
-        this.isAuthenticated();
-        user.isLogin = true;
-      }
-    });
-
-  	return loginSuccess;
-  }
-
-  logout(userInformation) {
+  logout() {
   	let logoutSuccess = false;
-  	this.usersInformation.forEach((user, index) => {
-      if (user.email === userInformation.email) {
-        localStorage.setItem('email', null);
-        localStorage.setItem('password', null);
-  		  logoutSuccess = true;
-        user.isLogin = false;
-      }
-    });
+  	// this.usersInformation.forEach((user, index) => {
+    if (localStorage.getItem('loginSuccessUser')!== "null") {
+      localStorage.setItem('loginSuccessUser', null);
+        // localStorage.setItem('password', null);
+  		logoutSuccess = true;
+        // user.isLogin = false;
+    }
+    // });
 
   	return logoutSuccess;
   }
 
   isAuthenticated() {
   	let isAuthenticated = true;
-  	if (localStorage.getItem('email') === "null") {
+  	if (localStorage.getItem('loginSuccessUser') === "null") {
   		isAuthenticated = false;
   	}
 
@@ -84,11 +86,22 @@ export class AuthorizationService {
   getUserInfo() {
     let userInfo;
     this.usersInformation.forEach((user, index) => {
-      if (user.isLogin === true) {
+      if (user.fakeToken === localStorage.getItem('loginSuccessUser')) {
         userInfo = user;
       }
     });
 
     return userInfo;
+  }
+
+  getUsers() {
+    var result;
+    result = this.http.get(`${BASE_URL}`);
+    console.log(result);
+    return result;
+  }
+
+  updateUsersInformation(userInformations) {
+    this.usersInformation = userInformations;
   }
 }

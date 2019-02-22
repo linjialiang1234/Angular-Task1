@@ -14,16 +14,16 @@ export class HeaderComponent implements OnInit {
 
   }
 
-  login(userInformation) {
-  	this.authorizationService.login(userInformation);
-  }
+  // login(userInformation) {
+  // 	this.authorizationService.login(userInformation);
+  // }
 
-  logout(userInformation) {
-  	this.authorizationService.logout(userInformation);
-  }
+  // logout(userInformation) {
+  // 	this.authorizationService.logout();
+  // }
 
-  isAuthenticated() {
-  	this.authorizationService.isAuthenticated();
-  }
+  // isAuthenticated() {
+  // 	this.authorizationService.isAuthenticated();
+  // }
 
 }

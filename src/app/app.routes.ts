@@ -8,11 +8,12 @@ import { EditCourseComponent } from './edit-course/edit-course/edit-course.compo
 import { 
   AuthGuardService as AuthGuard 
 } from './auth-guard.service';
+import { Resolver } from './resolver';
 
 export const ROUTES: Route[] = [
   {	path: '', redirectTo: '/courses', pathMatch: 'full'},
   {	path: 'home', component: HomeComponent},
-  {	path: 'courses', component: CoursesPageComponent, canActivate: [AuthGuard]},
+  {	path: 'courses', component: CoursesPageComponent, canActivate: [AuthGuard], resolve: { products: Resolver }},
   {	path: 'courses/new', component: AddCoursePageComponent, canActivate: [AuthGuard] },
   { path: 'courses/:id', component: EditCourseComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginPageComponent},

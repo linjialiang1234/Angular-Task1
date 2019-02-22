@@ -32,7 +32,7 @@ export class CourseItemComponent implements OnInit {
   // }
 
   displayStarIcon() {
-    if (this.courseItem.topRated) {
+    if (this.courseItem.isTopRated) {
       return true;
     } else {
       return false;

@@ -5,6 +5,9 @@ import { DatePipe} from '@angular/common';
 import { FilterCoursePipe } from '../../filterCourse.pipe';
 import { CoursesService } from '../../courses.service';
 import { AuthorizationService } from '../../authorization.service';
+import { ActivatedRoute, Params } from '@angular/router';
+import { Location } from '@angular/common';
+
 
 @Component({
   selector: 'app-courses-page',
@@ -22,7 +25,9 @@ export class CoursesPageComponent implements OnInit, OnChanges, DoCheck, OnDestr
   public updatedCourseItem;
   public selectedCourseItem;
   public addCoursePage;
-  constructor(private _filterCoursePipe: FilterCoursePipe, private coursesService: CoursesService, private authorizationService: AuthorizationService) { }
+  constructor(private _filterCoursePipe: FilterCoursePipe, private coursesService: CoursesService, private authorizationService: AuthorizationService,
+     private route: ActivatedRoute,private location: Location) {
+   }
 
   ngOnChanges() {
     console.log('OnChanges');
@@ -30,10 +35,8 @@ export class CoursesPageComponent implements OnInit, OnChanges, DoCheck, OnDestr
 
   ngOnInit() {
     console.log('OnInit');
-    this.courseItems = this.coursesService.getList();
-    console.log(this.courseItems);
-
-    this.originalCourseItems = this.courseItems;
+    this.originalCourseItems = this.route.snapshot.data.products;
+    console.log("courseItems:" + this.originalCourseItems);
     this.addCoursePage = false;
   }
 

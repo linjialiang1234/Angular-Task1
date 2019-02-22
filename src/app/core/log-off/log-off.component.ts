@@ -16,14 +16,8 @@ export class LogOffComponent implements OnInit {
   }
 
   logOff() {
-  	const userInformation = {
-  		email: localStorage.getItem('email'),
-  		password: localStorage.getItem('password')
-  	};
-
   	let logoutResult;
-    let userInfo;
-  	logoutResult = this.authorizationService.logout(userInformation);
+  	logoutResult = this.authorizationService.logout();
 
   	if (logoutResult === true) {
   		console.log('logout successfully');
