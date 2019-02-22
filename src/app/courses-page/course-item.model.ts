@@ -1,8 +1,9 @@
 export interface CourseItem {
   id: number;
-  title: string;
-  createDate: Date;
-  duration: number;
+  name: string;
   description: string;
   isTopRated: boolean;
+  data: String;
+  auth: [];
+  length: number;
 }

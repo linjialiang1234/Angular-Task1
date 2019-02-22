@@ -1,11 +1,11 @@
 <div class="alert alert-primary course-item" [creationDate]="courseItem" [ngClass]="{'changeBackgroundColor': displayStarIcon()}">
 	<div class="row">
 		<div class="col-6 course-title">
-			<div>{{courseItem.title | uppercase}}</div>
+			<div>{{courseItem.name | uppercase}}</div>
 			<div [ngClass]="{'showStarIcon': displayStarIcon(), 'hideStartIcon': !displayStarIcon()}"></div>
 		</div>
-		<div class="col-2">{{courseItem.duration | duration}}</div>
-		<div class="col-2">{{courseItem.createDate | date: 'dd.MM.yyyy'}}</div>
+		<div class="col-2">{{courseItem.length | duration}}</div>
+		<div class="col-2">{{courseItem.date | date: 'dd.MM.yyyy'}}</div>
 		<div class="col-2">
 			<a class="btn" routerLink="/courses/{{courseItem.id}}">
 				Edit

@@ -1,7 +1,7 @@
 <div class="add-course-page-container">
 	<form>
   		Title<br>
-  		<input type="text" name="course-title"  [(ngModel)]="courseItem.title"> 
+  		<input type="text" name="course-title"  [(ngModel)]="courseItem.name"> 
   		<br>
   		Description<br>
   		<textarea name="course-description" rows="4" cols="50" [(ngModel)]="courseItem.description"></textarea>
@@ -9,19 +9,19 @@
 		<!-- <add-course-date></add-course-date> -->
 		<div>
 	       Date:<br>
-  	       <input type="text" name="course-date"  [(ngModel)]="courseItem.createDate"> 
+  	       <input type="text" name="course-date"  [(ngModel)]="courseItem.date"> 
   	       <br>
         </div>
 		<!-- <add-course-duration></add-course-duration> -->
 		<div>
 	       Duration:<br>
-  	       <input type="text" name="course-duration"  [(ngModel)]="courseItem.duration">{{courseItem.duration}} 
+  	       <input type="text" name="course-duration"  [(ngModel)]="courseItem.length">{{courseItem.length}} 
   	       <br>
         </div>
 		<!-- <add-course-authors></add-course-authors> -->
 		<div>
 	       Authors:<br>
-  	       <input type="text" name="course-authors"  [(ngModel)]="courseItem.authors">
+  	       <input type="text" name="course-authors"  [(ngModel)]="courseItem.authors.firstName">
   	       <br>
         </div>
 		<div>

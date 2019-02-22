@@ -72,10 +72,6 @@ export class CoursesService {
       return date;
   }
 
-  // getList() {
-  //   return this.courseItems;
-  // }
-
   createCourse(courseInformation) {
     this.courseItems.push(courseInformation);
     return courseInformation;
@@ -105,12 +101,9 @@ export class CoursesService {
   }
 
   removeItem(courseId) {
-    this.courseItems.forEach((course, index) => {
-      if (course.id === courseId) {
-        this.courseItems.splice(index, 1);
-      }
-    });
-    return this.courseItems;
-
+    var result;
+    result = this.http.delete(`${BASE_URL}`+ '/' + courseId);
+    console.log(result);
+    return result;
   }
 }
