@@ -1,5 +1,5 @@
 <div>
 	Authors:<br>
-  	<input type="text" name="course-authors"  [(ngModel)]="courseAuthors">
+  	<input type="text" name="course-authors"  [(ngModel)]="createdCourseItemAuthors" (ngModelChange)="updateCourseAuthors()">
   	<br>
 </div>

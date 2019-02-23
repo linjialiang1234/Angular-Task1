@@ -73,8 +73,12 @@ export class CoursesService {
   }
 
   createCourse(courseInformation) {
-    this.courseItems.push(courseInformation);
-    return courseInformation;
+    var result;
+    result = this.http.post(`${BASE_URL}`, courseInformation)
+    // this.courseItems.push(courseInformation);
+    // return courseInformation;
+    console.log(result);
+    return result;
   }
 
   getItemById(courseId) {

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { AuthorizationService } from '../../authorization.service';
 import { DurationPipe } from '../../duration.pipe';
 
@@ -9,9 +9,16 @@ import { DurationPipe } from '../../duration.pipe';
 })
 export class AddCourseDurationComponent implements OnInit {
   public courseDuration;
+  @Input() public createdCourseItemLength;
+  @Output() updateCreatedCourseItemLength: EventEmitter<number> = new EventEmitter<number>();
+
   constructor(private authorizationService: AuthorizationService) { }
 
   ngOnInit() {
+  }
+
+  updateCourseLength() {
+  	this.updateCreatedCourseItemLength.emit(this.createdCourseItemLength);
   }
 
 

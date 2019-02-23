@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { AuthorizationService } from '../../authorization.service';
 
 @Component({
@@ -8,9 +8,16 @@ import { AuthorizationService } from '../../authorization.service';
 })
 export class AddCourseAuthorsComponent implements OnInit {
   public courseAuthors;
+  @Input() public createdCourseItemAuthors;
+  @Output() updateCreatedCourseItemAuthors: EventEmitter<string> = new EventEmitter<string>();
+
   constructor(private authorizationService: AuthorizationService) { }
 
   ngOnInit() {
+  }
+
+  updateCourseAuthors() {
+  	this.updateCreatedCourseItemAuthors.emit(this.createdCourseItemAuthors);
   }
 
 }

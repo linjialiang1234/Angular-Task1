@@ -1,5 +1,8 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { CoursesService } from '../../courses.service';
+import { ActivatedRoute, Params } from '@angular/router';
+import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-course',
@@ -18,7 +21,7 @@ export class AddCourseComponent implements OnInit {
   };
   @Output() addCourse: EventEmitter<string> = new EventEmitter<string>();
 
-  constructor(private coursesService: CoursesService) { }
+  constructor(private coursesService: CoursesService, private route: ActivatedRoute,private location: Location, private router: Router) { }
 
   ngOnInit() {
   }

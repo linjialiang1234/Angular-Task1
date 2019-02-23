@@ -3,7 +3,7 @@ export interface CourseItem {
   name: string;
   description: string;
   isTopRated: boolean;
-  data: String;
-  auth: [];
+  date: String;
+  authors: [];
   length: number;
 }
