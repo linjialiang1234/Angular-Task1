@@ -16,7 +16,7 @@ import { PageNotFoundModule } from './page-not-found/page-not-found.module';
 import { EditCourseModule } from './edit-course/edit-course.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Resolver } from './resolver';
-
+import { AuthInterceptor} from './auth-interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +35,10 @@ import { Resolver } from './resolver';
     EditCourseModule,
     HttpClientModule
   ],
-  providers: [CoursesService, AuthorizationService, Resolver],
+  providers: [CoursesService, AuthorizationService, Resolver, 
+  {
+     provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
