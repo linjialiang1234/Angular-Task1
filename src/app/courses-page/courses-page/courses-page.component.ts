@@ -60,9 +60,12 @@ export class CoursesPageComponent implements OnInit, OnChanges, DoCheck, OnDestr
   }
 
   deleteCourse(courseId) {
+    let pageStart = 0;
+    let pageItemCount = 5;
+
     this.coursesService.removeItem(courseId).subscribe(data => {
       console.log(data);
-      this.coursesService.getList().subscribe(data => {
+      this.coursesService.getList(pageStart, pageItemCount).subscribe(data => {
         this.courseItems = data;
       });
     });
@@ -86,5 +89,9 @@ export class CoursesPageComponent implements OnInit, OnChanges, DoCheck, OnDestr
 
   isAuth() {
     return this.authorizationService.isAuthenticated();
+  }
+
+  loadMoreCourses(moreCourses) {
+    this.courseItems = moreCourses;
   }
 }

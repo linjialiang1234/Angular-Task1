@@ -5,7 +5,7 @@
 		<app-add-course (addCourse) = "addCourse($event)"></app-add-course>
 	</div>
 	<app-course-item *ngFor="let item of courseItems" [courseItem]="item" (update)="updateCourse($event)" (delete)="deleteCourse($event)" createdDate = "item.createDate"></app-course-item>
-	<app-load-more [courseItems]="courseItems"></app-load-more>
+	<app-load-more [courseItems]="courseItems" (loadMore)="loadMoreCourses($event)"></app-load-more>
 </div>
 
 <div class="app-courses-page" *ngIf="isAuth()===false">

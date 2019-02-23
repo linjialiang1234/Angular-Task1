@@ -1,4 +1,8 @@
-import { Component, OnInit, OnChanges, Input } from '@angular/core';
+import { Component, OnInit, OnChanges, Input, Output, EventEmitter } from '@angular/core';
+import { CoursesService } from '../../courses.service';
+import { ActivatedRoute, Params } from '@angular/router';
+import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-load-more',
@@ -7,7 +11,9 @@ import { Component, OnInit, OnChanges, Input } from '@angular/core';
 })
 export class LoadMoreComponent implements OnInit, OnChanges {
   @Input() public courseItems;
-  constructor() { }
+  @Output() loadMore: EventEmitter<any> = new EventEmitter<any>();
+
+  constructor(private coursesService: CoursesService, private route: ActivatedRoute,private location: Location, private router: Router) { }
 
   ngOnChanges() {
   }
@@ -16,7 +22,14 @@ export class LoadMoreComponent implements OnInit, OnChanges {
   }
 
   showLoadMore() {
-    console.log('This button name is: Load More');
+    let pageStart = 0;
+    let pageItemCount = 0;
+    this.coursesService.getList(pageStart, pageItemCount).subscribe(data => {
+        this.courseItems = data;
+        this.loadMore.emit(this.courseItems);
+      });
+    
+
   }
 
   displayCourseItem() {

@@ -60,9 +60,14 @@ export class CoursesService {
 
   }
 
-  getList() {
+  getList(start, count) {
     var result;
-    result = this.http.get(`${BASE_URL}`);
+    result = this.http.get(`${BASE_URL}`,  {
+      params: {
+        start,
+        count
+      }
+    });
     console.log(result);
     return result;
   }

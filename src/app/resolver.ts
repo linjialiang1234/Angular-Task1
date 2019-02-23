@@ -8,6 +8,8 @@ export class Resolver implements Resolve<Observable<string>> {
   constructor(private coursesService: CoursesService) { }
 
   resolve() {
-    return this.coursesService.getList();
+  	let pageStart = 0;
+  	let pageItemCount = 5;
+    return this.coursesService.getList(pageStart,pageItemCount);
   }
 }
