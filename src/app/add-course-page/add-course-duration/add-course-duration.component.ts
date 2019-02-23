@@ -20,6 +20,4 @@ export class AddCourseDurationComponent implements OnInit {
   updateCourseLength() {
   	this.updateCreatedCourseItemLength.emit(this.createdCourseItemLength);
   }
-
-
 }

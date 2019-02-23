@@ -68,10 +68,12 @@ export class CoursesPageComponent implements OnInit, OnChanges, DoCheck, OnDestr
     });
   }
 
-  searchCourse(courseInformation) {
-    let showFilterCourse;
-    showFilterCourse = this._filterCoursePipe.transform(this.originalCourseItems, courseInformation);
-    this.courseItems = showFilterCourse;
+  searchCourse(textFragment) {
+    this.coursesService.searchCourses(textFragment).subscribe(data=> {
+      console.log(data);
+      this.courseItems = data;
+
+    });
   }
 
   addCourse(addCourseInformation) {

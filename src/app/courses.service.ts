@@ -110,4 +110,15 @@ export class CoursesService {
     console.log(result);
     return result;
   }
+
+  searchCourses(textFragment) {
+    var result;
+    result = this.http.get(`${BASE_URL}`, {
+      params: {
+        textFragment
+      }
+    });
+
+    return result;
+  }
 }
