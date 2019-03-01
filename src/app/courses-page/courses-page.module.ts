@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+
 import { CommonModule } from '@angular/common';
 import { CoursesPageComponent } from './courses-page/courses-page.component';
 import { CourseItemComponent } from './course-item/course-item.component';
@@ -30,6 +31,7 @@ import { ROUTES } from '../app.routes';
     BreadcrumbsComponent, CreatedDateDirective, DurationPipe, FilterCoursePipe, DialogOverviewExampleDialog],
   imports: [
     FormsModule,
+    ReactiveFormsModule,
     CommonModule,
     BrowserAnimationsModule,
     MatButtonModule,

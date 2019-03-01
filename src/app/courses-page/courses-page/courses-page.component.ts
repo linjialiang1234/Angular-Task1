@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges, DoCheck, OnDestroy, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, OnChanges, DoCheck, OnDestroy, ChangeDetectionStrategy, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { CourseItem } from '../course-item.model';
 import { UserIdentity } from '../user-identity.model';
 import { DatePipe} from '@angular/common';
@@ -8,6 +8,11 @@ import { AuthorizationService } from '../../authorization.service';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/Rx';
+// import 'rxjs/add/observable/fromEvent';
+import { fromEvent } from 'rxjs';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-courses-page',
@@ -16,7 +21,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./courses-page.component.css'],
   providers: [DatePipe, FilterCoursePipe]
 })
-export class CoursesPageComponent implements OnInit, OnChanges, DoCheck, OnDestroy {
+export class CoursesPageComponent implements OnInit, OnChanges, DoCheck, OnDestroy, AfterViewInit  {
+  @ViewChild('searchRef') searchRef: ElementRef;
 
   public courseItems: CourseItem[];
   public userIdentity: UserIdentity[];
@@ -25,6 +31,8 @@ export class CoursesPageComponent implements OnInit, OnChanges, DoCheck, OnDestr
   public updatedCourseItem;
   public selectedCourseItem;
   public addCoursePage;
+  private term = new FormControl();
+
   constructor(private _filterCoursePipe: FilterCoursePipe, private coursesService: CoursesService, private authorizationService: AuthorizationService,
      private route: ActivatedRoute,private location: Location, private router: Router) {
    }
@@ -39,6 +47,43 @@ export class CoursesPageComponent implements OnInit, OnChanges, DoCheck, OnDestr
     this.courseItems = this.route.snapshot.data.products;
     console.log("courseItems:" + this.originalCourseItems);
     this.addCoursePage = false;
+
+    console.log(this.searchRef);
+    this.term.valueChanges.
+      debounceTime(400)
+        .distinctUntilChanged()
+        .subscribe(searchTerm=> {
+          this.searchCourse(searchTerm)
+        });
+
+     
+  }
+
+  ngAfterViewInit() {
+    // console.log(this.searchRef);
+    // const obs =fromEvent(this.searchRef.nativeElement, 'keyup')
+    //   // get value
+    //   .map((evt: any) => evt.target.value)
+    //   // text length must be > 2 chars
+    //   //.filter(res => res.length > 2)
+    //   // emit after 1s of silence
+    //   .debounceTime(1000)        
+    //   // emit only if data changes since the last emit       
+    //   .distinctUntilChanged()
+    //   // subscription
+    //   .subscribe((text: string) => this.searchCourse(text));
+    // const obs =fromEvent(this.searchRef.nativeElement, 'keyup')
+    //   // get value
+    //   .map((evt: any) => evt.target.value)
+    //   // text length must be > 2 chars
+    //   //.filter(res => res.length > 2)
+    //   // emit after 1s of silence
+    //   .debounceTime(1000)        
+    //   // emit only if data changes since the last emit       
+    //   .distinctUntilChanged()
+    //   // subscription
+    //   obs.subscribe((text: string) => this.searchCourse(text));
+
   }
 
   ngDoCheck() {
