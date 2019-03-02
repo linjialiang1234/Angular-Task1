@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse, HttpErrorResponse, HttpParams } from '@angular/common/http';
-import { Observable, throwError } from 'rxjs';
+import { Observable, Subject, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { HttpHeaders } from '@angular/common/http';
 
@@ -10,6 +10,7 @@ const BASE_URL = 'http://localhost:3004/users';
   providedIn: 'root'
 })
 export class AuthorizationService {
+  private loginUserInfo = new Subject<any>();
 
   public userIdentity = [{
     id: 1,
@@ -29,48 +30,15 @@ export class AuthorizationService {
 
   public usersInformation;
 
-  // {
-  //   "id": 6093,
-  //   "fakeToken": "58ebfdf7f1f558c5c86e17f6",
-  //   "name": {
-  //     "first": "Ines",
-  //     "last": "Lowe"
-  //   },
-  //   "login": "Warner",
-  //   "password": "ea"
-  // }
-  // = [{
-  //   id: 1,
-  //   email: '1111@epam.com',
-  //   password: '123456',
-  //   isLogin: false
-  // },
-  // {
-  //   id: 2,
-  //   email: '2222@epam.com',
-  //   password: '123456',
-  //   isLogin: false
-  // },
-  // {
-  //   id: 3,
-  //   email: '3333@epam.com',
-  //   password: '123456',
-  //   isLogin: false
-  // }];
-
   constructor(private http: HttpClient) { }
 
   logout() {
   	let logoutSuccess = false;
-  	// this.usersInformation.forEach((user, index) => {
     if (localStorage.getItem('loginSuccessUser')!== "null") {
       localStorage.setItem('loginSuccessUser', null);
-        // localStorage.setItem('password', null);
   		logoutSuccess = true;
-        // user.isLogin = false;
     }
-    // });
-
+  
   	return logoutSuccess;
   }
 
@@ -85,13 +53,27 @@ export class AuthorizationService {
 
   getUserInfo() {
     let userInfo;
-    this.usersInformation.forEach((user, index) => {
-      if (user.fakeToken === localStorage.getItem('loginSuccessUser')) {
-        userInfo = user;
+    let fakeToken = localStorage.getItem('loginSuccessUser');
+
+    userInfo = this.http.get(`${BASE_URL}`, {
+      params: {
+        fakeToken
       }
     });
 
     return userInfo;
+  }
+
+  setLoginUserInfo() {
+    let result;
+    this.getUserInfo().subscribe( data => {
+      result = data;
+      this.loginUserInfo.next(result);
+    })
+  }
+
+  getLoginUserInfo(): Observable<any> {
+    return this.loginUserInfo.asObservable();
   }
 
   getUsers() {

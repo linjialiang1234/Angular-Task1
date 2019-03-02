@@ -1,29 +1,38 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { AuthorizationService } from '../../authorization.service';
+import { Observable, Subject, Subscription  } from 'rxjs';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnChanges {
+  private subscription: Subscription;
+  public userInfo = "";
+  constructor(private authorizationService: AuthorizationService) { 
 
-  constructor(private authorizationService: AuthorizationService) { }
-
+  }
   ngOnInit() {
+    this.authorizationService.getLoginUserInfo().subscribe(data => {
+      console.log(data);
+      this.userInfo = data[0].name.first;
+    })
+  }
+
+  ngOnChanges() {
+    console.log('OnChanges');
+    this.isAuthenticated();
 
   }
 
-  // login(userInformation) {
-  // 	this.authorizationService.login(userInformation);
-  // }
+  isAuthenticated() {
+    if( this.authorizationService.isAuthenticated() === true) {
 
-  // logout(userInformation) {
-  // 	this.authorizationService.logout();
-  // }
-
-  // isAuthenticated() {
-  // 	this.authorizationService.isAuthenticated();
-  // }
+      this.authorizationService.getUserInfo().subscribe(data => {
+        console.log(data);
+      })
+    }
+  }
 
 }

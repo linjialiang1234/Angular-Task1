@@ -24,7 +24,6 @@ export class LoginPageComponent implements OnInit {
   		password: this.password
   	};
 
-    let userInfo;
     let loginSuccess = false;
 
     this.authorizationService.getUsers().subscribe((data) => {
@@ -35,13 +34,11 @@ export class LoginPageComponent implements OnInit {
         if (user.login === userInformation.login && user.password === userInformation.password) {
           localStorage.setItem('loginSuccessUser', user.fakeToken);
           loginSuccess = true;
-          // this.authorizationService.isAuthenticated();
         }
       });
 
       if(loginSuccess === true) {
         console.log('logged in successfully');
-        userInfo = this.authorizationService.getUserInfo();
         this.router.navigate(['/courses']);
       } else {
         console.log('logged in unsuccessfully');

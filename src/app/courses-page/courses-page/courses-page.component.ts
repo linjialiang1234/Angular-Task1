@@ -9,7 +9,7 @@ import { ActivatedRoute, Params } from '@angular/router';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { Observable, Subject, Subscription  } from 'rxjs';
-import { map, debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { map, debounceTime, distinctUntilChanged, filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-courses-page',
@@ -47,12 +47,15 @@ export class CoursesPageComponent implements OnInit, OnChanges, DoCheck, OnDestr
 
     this.subscription = this.keyUp.pipe(
         map(event => (event.target as HTMLInputElement).value),
+        filter(text => text.length > 2),
         debounceTime(1000),
         distinctUntilChanged(),
         ).subscribe(searchTerm=> {
             this.searchCourse(searchTerm)
         }
     );
+
+    this.authorizationService.setLoginUserInfo();
   }
 
   ngAfterViewInit() {
