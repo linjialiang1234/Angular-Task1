@@ -17,9 +17,12 @@ import { EditCourseModule } from './edit-course/edit-course.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Resolver } from './resolver';
 import { AuthInterceptor} from './auth-interceptor';
+import { LoadingScreenModule } from './loading-screen/loading-screen.module';
+import { LoadingScreenInterceptor } from "./loading.interceptor";
+
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -33,12 +36,21 @@ import { AuthInterceptor} from './auth-interceptor';
     RouterModule.forRoot(ROUTES),
     PageNotFoundModule,
     EditCourseModule,
-    HttpClientModule
+    HttpClientModule,
+    LoadingScreenModule
   ],
   providers: [CoursesService, AuthorizationService, Resolver, 
   {
-     provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true
-  }],
+     provide: HTTP_INTERCEPTORS, 
+     useClass: AuthInterceptor, 
+     multi: true
+  },
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: LoadingScreenInterceptor,
+    multi: true
+  }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

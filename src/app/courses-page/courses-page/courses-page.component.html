@@ -1,8 +1,7 @@
 <div class="app-courses-page" *ngIf="isAuth()===true">
 	<app-bread-crumbs></app-bread-crumbs>
 	<div class="search-and-add-course">
-		<app-search-course (searchCourse)="searchCourse($event)"  ></app-search-course>
-  		<input type="text" (keyup)='keyUp.next($event)'> 
+  		<input type="text" placeholder="Name, fragment or date" (keyup)='keyUp.next($event)'> 
 		<app-add-course (addCourse) = "addCourse($event)"></app-add-course>
 	</div>
 	<app-course-item *ngFor="let item of courseItems" [courseItem]="item" (update)="updateCourse($event)" (delete)="deleteCourse($event)" createdDate = "item.createDate"></app-course-item>
