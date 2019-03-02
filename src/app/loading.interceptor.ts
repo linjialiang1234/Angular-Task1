@@ -26,7 +26,9 @@ export class LoadingScreenInterceptor implements HttpInterceptor {
         finalize(() => {
           this.activeRequests--;
           if (this.activeRequests === 0) {
-            this.loadingScreenService.stopLoading();
+            let stopLoading = setTimeout(() => {
+              this.loadingScreenService.stopLoading();
+            }, 3000);
           }
         })
       )

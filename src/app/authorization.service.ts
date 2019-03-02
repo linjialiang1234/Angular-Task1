@@ -11,23 +11,6 @@ const BASE_URL = 'http://localhost:3004/users';
 })
 export class AuthorizationService {
   private loginUserInfo = new Subject<any>();
-
-  public userIdentity = [{
-    id: 1,
-    firstName: 'Leo',
-    lastName: 'Lam'
-  },
-  {
-    id: 2,
-    firstName: 'Jack',
-    lastName: 'Wang'
-  },
-  {
-    id: 3,
-    firstName: 'Tom',
-    lastName: 'Ma'
-  }];
-
   public usersInformation;
 
   constructor(private http: HttpClient) { }

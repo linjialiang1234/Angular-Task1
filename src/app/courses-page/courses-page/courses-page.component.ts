@@ -1,6 +1,5 @@
 import { Component, OnInit, OnChanges, DoCheck, OnDestroy, ChangeDetectionStrategy, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { CourseItem } from '../course-item.model';
-import { UserIdentity } from '../user-identity.model';
 import { DatePipe} from '@angular/common';
 import { FilterCoursePipe } from '../../filterCourse.pipe';
 import { CoursesService } from '../../courses.service';
@@ -21,7 +20,6 @@ import { map, debounceTime, distinctUntilChanged, filter } from 'rxjs/operators'
 export class CoursesPageComponent implements OnInit, OnChanges, DoCheck, OnDestroy, AfterViewInit  {
 
   public courseItems: CourseItem[];
-  public userIdentity: UserIdentity[];
   public showCourseItem: boolean;
   public originalCourseItems: CourseItem[];
   public updatedCourseItem;
