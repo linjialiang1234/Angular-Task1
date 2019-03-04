@@ -19,6 +19,8 @@ import { Resolver } from './resolver';
 import { AuthInterceptor} from './auth-interceptor';
 import { LoadingScreenModule } from './loading-screen/loading-screen.module';
 import { LoadingScreenInterceptor } from "./loading.interceptor";
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,10 @@ import { LoadingScreenInterceptor } from "./loading.interceptor";
     PageNotFoundModule,
     EditCourseModule,
     HttpClientModule,
-    LoadingScreenModule
+    LoadingScreenModule,
+    StoreDevtoolsModule.instrument({
+      maxAge: 10
+    })
   ],
   providers: [CoursesService, AuthorizationService, Resolver, 
   {
