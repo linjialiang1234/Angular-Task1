@@ -21,7 +21,10 @@ import { LoadingScreenModule } from './loading-screen/loading-screen.module';
 import { LoadingScreenInterceptor } from "./loading.interceptor";
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-
+import { EffectsModule} from '@ngrx/effects';
+import { CounterEffects} from './store/counter.effects';
+import { counterReducer } from './store/counter.reducer';
+import { MyCounterModule } from './my-counter/my-counter.module';
 @NgModule({
   declarations: [
     AppComponent
@@ -40,6 +43,9 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     EditCourseModule,
     HttpClientModule,
     LoadingScreenModule,
+    MyCounterModule,
+    StoreModule.forRoot({count: counterReducer}),
+    EffectsModule.forRoot([CounterEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 10
     })
