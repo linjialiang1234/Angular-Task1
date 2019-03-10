@@ -6,13 +6,15 @@ import { AddCourseAuthorsComponent} from './add-course-authors/add-course-author
 import { AddCourseDateComponent} from './add-course-date/add-course-date.component';
 import { AddCourseDurationComponent} from './add-course-duration/add-course-duration.component';
 import { RouterModule} from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AddCoursePageComponent, AddCourseAuthorsComponent, AddCourseDateComponent, AddCourseDurationComponent],
   imports: [
     CommonModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule
   ],
   exports: [AddCoursePageComponent]
 })

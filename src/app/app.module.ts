@@ -25,6 +25,7 @@ import { EffectsModule} from '@ngrx/effects';
 import { AuthenticationService } from './services/authentication.service'; 
 import { AuthenticationEffects } from './store/effects/authentication.effects';
 import { reducers } from './store/app.states';
+import { ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent
@@ -43,6 +44,7 @@ import { reducers } from './store/app.states';
     EditCourseModule,
     HttpClientModule,
     LoadingScreenModule,
+    ReactiveFormsModule,
     StoreModule.forRoot(reducers, {}),
     EffectsModule.forRoot([AuthenticationEffects]),
     StoreDevtoolsModule.instrument({

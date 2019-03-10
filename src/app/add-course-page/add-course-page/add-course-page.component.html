@@ -1,16 +1,20 @@
 <div class="add-course-page-container">
-	<form>
+	<form [formGroup]="courseForm" (ngSubmit)="onSubmit()">
   		Title<br>
-  		<input type="text" name="course-title"  [(ngModel)]="createdCourseItem.name"> 
+  		<!-- <input type="text" name="course-title"  [(ngModel)]="createdCourseItem.name"> -->
+  		<input type="text" name="course-title" formControlName="name"> 
   		<br>
   		Description<br>
-  		<textarea name="course-description" rows="4" cols="50" [(ngModel)]="createdCourseItem.description"></textarea>
+  		<textarea name="course-description" rows="4" cols="50" formControlName="description"></textarea>
 		<br>
-		<add-course-date [createdCourseItemDate]="createdCourseItem.date" (updateCreatedCourseItemDate)="updateCourseItemDate($event)"></add-course-date>
+		<add-course-date [createdCourseItemDate]="createdCourseItem.date" (updateCreatedCourseItemDate)="updateCourseItemDate($event)"
+		formControlName="user"></add-course-date>
+		<p>{{user|json}}</p>
 		<add-course-duration [createdCourseItemLength]="createdCourseItem.length" (updateCreatedCourseItemLength)="updateCourseItemLength($event)"></add-course-duration>
 		<add-course-authors [createdCourseItemAuthors]="createdCourseItem.authors" (updateCreatedCourseItemAuthors)="updateCourseItemAuthors($event)"></add-course-authors>
 		<div>
-			<button type="button" class="save-button" (click)="save()">Save</button>
+			<!-- <button type="submit" class="save-button" (click)="save()">Save</button> -->
+			<button type="submit" class="save-button" >Save</button>
 			<button type="button" class="cancel-button" (click)="cancel()">Cancel</button>
 		</div>
 	</form>
